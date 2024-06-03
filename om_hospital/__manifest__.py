@@ -2,7 +2,7 @@
 {
     'name': 'Hospital Management',
     'version': '1.0',
-    'summary': 'Hospital Management Software',
+    'summary': 'FlowEazy Software Management',
     'sequence': -100,
     'description': """Hospital Management Software""",
     'category': 'Productivity',
