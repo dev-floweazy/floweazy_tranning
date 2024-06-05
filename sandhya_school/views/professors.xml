@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-    <record id="school.professor_tree" model="ir.ui.view">
-        <field name = "name">school.professor.tree</field>
-        <filed name="model">school.professor</filed>
-        <field name = "arch" type = "xml">
+    <record id="professor_tree" model="ir.ui.view">
+        <field name="name">school.professor.tree</field>
+        <field name="model">school.professor</field>
+        <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field age = "age"/>
-                <field salary = "salary"/>
+                <field name="date_of_birth"/>
+                <field name="salary"/>
+                <field name="qualification"/>
             </tree>
         </field>
     </record>
 
-    <record id="school.professor_form" model="ir.ui.view">
-        <field name = "name">school.professor.form</field>
+    <record id="professor_form" model="ir.ui.view">
+        <field name="name">school.professor.form</field>
         <field name="model">school.professor</field>
         <field name="arch" type="xml">
             <form>
                 <sheet>
                     <group>
                         <field name="name" />
-                        <field name="date of birth" />
+                        <field name="date_of_birth" />
 
                     </group>
                     <group>
@@ -32,14 +33,14 @@
         </field>
     </record>
 
-    <record id="school.professor_action" model ="ir.actions.act_window">
+    <record id="professor_action" model ="ir.actions.act_window">
         <field name="name">Professors</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.professor</field>
         <field name="view_mode">tree,kanban,form</field>
         <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
-        Create your first student!
+        Create your first professor!
         </p>
         </field>
     </record>

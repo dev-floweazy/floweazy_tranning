@@ -9,6 +9,7 @@
         <field name="name"/>
         <field name="standard"/>
         <field name="date_of_birth"/>
+        <field name="guardian_name"/>
       </tree>
     </field>
   </record>
@@ -26,7 +27,8 @@
             </group>
             <group>
               <field name="standard"/>
-              <field name="guardian_name"/>  </group>
+              <field name="guardian_name"/>
+            </group>
           </group>
         </sheet>
       </form>
@@ -48,6 +50,5 @@
   <menuitem id="school_root" name="School" sequence="10"/>
   <menuitem id="school_student_root" name="Students" parent="school_root" sequence="10"/>
   <menuitem id="school_student" name="Students" parent="school_student_root" action="student_action" sequence="10"/>
-
 
 </odoo>
