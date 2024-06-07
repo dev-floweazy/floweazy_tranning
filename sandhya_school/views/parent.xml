@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="parent_tree" model="ir.ui.view">
+        <field name="name">school.parent.tree</field>
+        <field name="model">school.parent</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="child_name"/>
+                <field name="relation_with_child"/>
+                <field name="age"/>
+                <field name="phone_no"/>
+                <field name="address"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="parent_form" model="ir.ui.view">
+        <field name="name">school.parent.form</field>
+        <field name="model">school.parent</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="age" />
+
+                    </group>
+                    <group>
+                        <field name="child_name" />
+                        <field name="relation_with_child"/>
+                        <field name="address"/>
+                    </group>
+
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="parent_action" model ="ir.actions.act_window">
+        <field name="name">parent</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.parent</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        Create your first registration!
+        </p>
+        </field>
+    </record>
+
+    <menuitem id="school_root" name="School" sequence="10"/>
+    <menuitem id="school_parent_root" name="Parents" parent="school_root" sequence="10"/>
+    <menuitem id="school_parent" name="Parents" parent="school_parent_root" action="parent_action" sequence="10"/>
+
+</odoo>

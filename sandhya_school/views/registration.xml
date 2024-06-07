@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="registration_tree" model="ir.ui.view">
+        <field name="name">school.registration.tree</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="date_of_birth"/>
+                <field name="standard"/>
+                <field name="gender"/>
+                <field name="guardian"/>
+                <field name="old_school"/>
+            </tree>
+        </field>
+    </record>
+
+
+    <record id="registration_form" model="ir.ui.view">
+        <field name="name">school.registration.form</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <field name="name" />
+                        <field name="date_of_birth" />
+
+                    </group>
+                    <group>
+                        <field name="standard" />
+                        <field name="gender" />
+                    </group>
+                    <group>
+                        <field name="guardian"/>
+                        <field name="old_school"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+     <record id="registration_action" model ="ir.actions.act_window">
+        <field name="name">registration</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">school.registration</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        Create your first registration!
+        </p>
+        </field>
+    </record>
+
+    <menuitem id="school_root" name="School" sequence="10"/>
+    <menuitem id="school_registration_root" name="Registrations" parent="school_root" sequence="10"/>
+    <menuitem id="school_registration" name="Registrations" parent="school_registration_root" action="registration_action" sequence="10"/>
+
+
+</odoo>

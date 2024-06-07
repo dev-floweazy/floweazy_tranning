@@ -1,3 +1,6 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_school_student,access.school.student,model_school_student,,1,1,1,1
 access_school_professor,access.school.professor,model_school_professor,,1,1,1,1
+access_school_registration,access.school.registration,model_school_registration,,1,1,1,1
+access_school_subject,access.school.subject,model_school_subject,,1,1,1,1
+access_school_parent,access.school.parent,model_school_parent,,1,1,1,1
