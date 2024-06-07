@@ -1,1 +1,1 @@
-from . import student, professor
+from . import student, professor, registration, subject, parent

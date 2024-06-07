@@ -11,7 +11,10 @@
     'data' : [
         'security/ir.model.access.csv',
         'views/student.xml',
-        'views/professors.xml'
+        'views/professors.xml',
+        'views/registration.xml',
+        'views/subject.xml',
+        'views/parent.xml'
     ],
     'demo' : [],
     'qweb' : [],
