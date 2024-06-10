@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="floor_tree" model="ir.ui.view">
+        <field name="name">hotel.floor.tree</field>
+        <field name="model">hotel.floor</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="rooms"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="floor_form" model="ir.ui.view">
+        <field name="name">hotel.floor.form</field>
+        <field name="model">hotel.floor</field>
+        <field name="arch" type="xml">
+            <form>
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="name"/>
+                            <field name="rooms"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="floor_action" model="ir.actions.act_window">
+        <field name="name">Floor</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">hotel.floor</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                create your first FLOOR!
+            </p>
+        </field>
+    </record>
+
+
+    <menuitem id="hotel_root"
+              name="Hotel"
+              sequence="10"/>
+
+    <menuitem id="hotel_floor_root"
+              name="Floors"
+              parent="hotel_root"
+              sequence="10"/>
+
+    <menuitem id="hotel_floor"
+              name="Floors"
+              parent="hotel_floor_root"
+              action="floor_action"
+              sequence="10"/>
+
+</odoo>
