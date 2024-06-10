@@ -56,6 +56,6 @@ class HotelFolioRoomLine(models.Model):
         for line in self:
             line.subtotal = (line.duration * line.room_price) * (1 - (line.discount / 100))
 
-    @api.onchange('room_id')
-    def _onchange_room_id(self):
-        self.room_price = self.room_id.charge if self.room_id else 0.0
+    # @api.onchange('room_id')
+    # def _onchange_room_id(self):
+    #     self.room_price = self.room_id.charge if self.room_id else 0.0
