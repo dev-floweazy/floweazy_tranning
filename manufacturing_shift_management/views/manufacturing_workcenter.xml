@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="view_hotel_folio_tree" model="ir.ui.view">
+        <field name="name">hotel.folio.tree</field>
+        <field name="model">hotel.folio</field>
+        <field name="arch" type="xml">
+            <tree>
+                <field name="name"/>
+                <field name="guest_name_id"/>
+                <field name="invoice_address_id"/>
+                <field name="order_date"/>
+                <field name="total"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_manufacturing_work_center_folio_form" model="ir.ui.view">
+        <field name="name">manufacturing.work_center.form</field>
+        <field name="model">manufacturing.work.center</field>
+        <field name="arch" type="xml">
+            <form>
+                <header>
+                    <field name="name"/>
+                </header>
+                <sheet>
+                    <notebook>
+                        <page string="Manufacturing Work Centers">
+                            <field name="operation_ids">
+                                <tree editable="bottom">
+                                    <field name="location"/>
+                                    <field name="capacity_for_machines"/>
+                                    <field name="production-capacity"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="manufacturing_work_center_action" model ="ir.actions.act_window">
+        <field name="name">Manufacturing_Work_Center</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">manufacturing.work.center</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        Create your first Manufacturing WorkCenters
+        </p>
+        </field>
+    </record>
+
+    <menuitem id="menu_manufacture_root" name="Manufacturing_work_center" sequence="10"/>
+    <menuitem id="menu_manufacturing_work_center_root" name="Manufacturing_work_center" parent="menu_manufacture_root" action="manufacturing_work_center_action"/>
+</odoo>

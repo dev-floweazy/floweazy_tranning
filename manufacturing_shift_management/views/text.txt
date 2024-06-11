@@ -1,0 +1,91 @@
+######################
+Manufacturing Operation:
+-----------------------
+Attributes:
+-------------
+Operation name
+Operation cost
+Estimated duration
+
+################
+Manufacturing Workcenter:
+-------------------
+Attributes:
+-------------------
+Workcenter name
+Location
+Capacity (e.g., number of machines, production capacity)
+
+##########
+Labor Type:
+------------
+Attributes:
+------------
+Labor type (e.g., skilled, unskilled)
+Hourly rate
+Description
+
+############
+Operation Labor:
+----------------
+Attributes:
+---------------
+Hours required for an operation
+Start date
+End date (if applicable)
+Description
+
+############
+Shift:
+------------
+Attributes:
+------------
+Shift name
+Start time
+End time
+Break duration
+Description
+################
+
+Employee:
+--------------
+Attributes:
+--------------
+Name
+Wage
+Employee ID
+Department
+Contact information (phone, email)
+Address
+#################
+
+Attendance:
+------------------
+Attributes:
+------------------
+Date
+Status (present/absent)
+Reason (if absent)
+Notes
+#######
+
+Salary:
+------------------
+Attributes:
+------------------
+Month
+Year
+Base salary
+Overtime hours
+Overtime rate
+Deductions (taxes, insurance)
+Net salary
+
+----------------------------------------------------------------------This Is Futher Action
+Relationships:
+
+Manufacturing operations are performed in workcenters.
+Each manufacturing operation may require different types of labor, each with its own hourly rate.
+Employees are assigned to shifts.
+Employee attendance records are associated with specific shifts and dates.
+Salary records are associated with employees for specific months and years.
