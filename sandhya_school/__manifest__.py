@@ -14,7 +14,8 @@
         'views/professors.xml',
         'views/registration.xml',
         'views/subject.xml',
-        'views/parent.xml'
+        'views/parent.xml',
+        'views/classes.xml',
     ],
     'demo' : [],
     'qweb' : [],

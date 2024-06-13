@@ -2,38 +2,32 @@
 <odoo>
 
   <record id="student_tree" model="ir.ui.view">
-    <field name="name">school.student.tree</field>
-    <field name="model">school.student</field>
+    <field name="name">school.standard.tree</field>
+    <field name="model">school.standard</field>
     <field name="arch" type="xml">
       <tree>
         <field name="name"/>
-        <field name="standard"/>
-        <field name="date_of_birth"/>
-        <field name="guardian_name"/>
+        <field name="professor_name_id"/>
       </tree>
     </field>
   </record>
 
   <record id="student_form" model="ir.ui.view">
-    <field name="name">school.student.form</field>
-    <field name="model">school.student</field>
+    <field name="name">school.standard.form</field>
+    <field name="model">school.standard</field>
     <field name="arch" type="xml">
       <form>
         <sheet>
           <group>
             <group>
               <field name="name"/>
-              <field name="date_of_birth"/>
+              <field name="professor_name_id"/>
             </group>
-            <group>
-              <field name="standard"/>
-              <field name="guardian_name"/>
-            </group>
-             <group string="Subjects">
-               <field name="subject_ids">
+             <group string="Students">
+               <field name="students_ids">
                  <tree string="Subjects">
-                   <field name="subject_id"/>
-                   <field name="name_id"/>
+                   <field name="students_id"/>
+                   <field name="standard_id"/>
                  </tree>
                </field>
              </group>
@@ -43,21 +37,21 @@
     </field>
   </record>
 
-  <record id="student_action" model="ir.actions.act_window">
-    <field name="name">Students</field>
+  <record id="standard_action" model="ir.actions.act_window">
+    <field name="name">Standard</field>
     <field name="type">ir.actions.act_window</field>
-    <field name="res_model">school.student</field>
+    <field name="res_model">school.standard</field>
     <field name="view_mode">tree,kanban,form</field>
     <field name="help" type="html">
       <p class="o_view_nocontent_smiling_face">
-        Create your first student!
+        Create your first Class!
       </p>
     </field>
   </record>
 
   <menuitem id="school_root" name="School" sequence="10"/>
-  <menuitem id="school_student_root" name="Students" parent="school_root" sequence="10"/>
-  <menuitem id="school_student" name="Students" parent="school_student_root" action="student_action" sequence="10"/>
+  <menuitem id="school_standard_root" name="Standard" parent="school_root" sequence="10"/>
+  <menuitem id="school_standard" name="Standards" parent="school_standard_root" action="standard_action" sequence="10"/>
   <!-- <menuitem id="menu_school_student_lines_main" name="Student Lines" parent="menu_school_student" action="action_school_student_lines" sequence="2"/> -->
 
 </odoo>

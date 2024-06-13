@@ -12,6 +12,13 @@
                 <field name="gender"/>
                 <field name="guardian"/>
                 <field name="old_school"/>
+                <field name="first_name"/>
+                <field name="disability"/>
+                <field name="address"/>
+                <field name="registration_fee"/>
+                <field name="registration_date"/>
+                <!-- <field name="bonafide"/> -->
+                <field name="guardian_type" />
             </tree>
         </field>
     </record>
@@ -35,6 +42,15 @@
                     <group>
                         <field name="guardian"/>
                         <field name="old_school"/>
+                        <field name="first_name"/>
+                        <field name="disability"/>
+                    </group>
+                    <group>
+                        <field name="address"/>
+                        <field name="registration_fee"/>
+                        <field name="registration_date"/>
+                        <!--<field name="bonafide"/>-->
+                        <field name="guardian_type"/>
                     </group>
                 </sheet>
             </form>
