@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 {
-    'name': 'Hospital Management',
+    'name': 'Hotel',
     'version': '1.0',
     'summary': 'FlowEazy Software Management',
     'sequence': -100,
@@ -13,8 +13,9 @@
         'security/ir.model.access.csv',
         'views/floor.xml',
         'views/folio.xml',
-        'views/folio_sequence.xml',
+        'data/folio_sequence.xml',
         'views/rooms.xml',
+
     ],
     'demo': [],
     'qweb': [],

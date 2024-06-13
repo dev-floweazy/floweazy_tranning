@@ -1,4 +1,4 @@
-<!-- views/hotel_folio_views.xml -->
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
     <record id="view_hotel_folio_tree" model="ir.ui.view">
         <field name="name">hotel.folio.tree</field>
@@ -6,7 +6,8 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="guest_name"/>
+                <field name="guest_name_id"/>
+                <field name="invoice_address_id"/>
                 <field name="order_date"/>
                 <field name="total"/>
             </tree>
@@ -19,17 +20,17 @@
         <field name="arch" type="xml">
             <form>
                 <header>
-                    <field name="name"/>
+                    <field name="name" readonly="1"/>
                 </header>
                 <sheet>
                     <group>
-                        <field name="order_date"/>
-                        <field name="guest_name"/>
-                        <field name="invoice_address"/>
+                        <field name="order_date" readonly="1"/>
+                        <field name="guest_name_id"/>
+                        <field name="invoice_address_id"/>
                     </group>
                     <notebook>
-                        <page string="Folio">
-                            <field name="room_lines">
+                        <page string="Room Lines">
+                            <field name="room_lines_ids">
                                 <tree editable="bottom">
                                     <field name="check_in_date"/>
                                     <field name="check_out_date"/>
@@ -42,20 +43,27 @@
                             </field>
                         </page>
                     </notebook>
+                    <group>
+                    <field name="total" readonly="1"/>
+                    </group>
                 </sheet>
-                <footer>
-                    <field name="total"/>
-                </footer>
             </form>
         </field>
     </record>
 
-    <record id="action_hotel_folio" model="ir.actions.act_window">
-        <field name="name">Hotel Folios</field>
+    <record id="folio_action" model ="ir.actions.act_window">
+        <field name="name">Folio</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="res_model">hotel.folio</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        Create your first FOLIO!
+        </p>
+        </field>
     </record>
 
-    <menuitem id="menu_hotel_root" name="Hotel Management"/>
-    <menuitem id="menu_hotel_folio" name="Folios" parent="menu_hotel_root" action="action_hotel_folio"/>
+    <menuitem id="menu_hotel_root" name="Hotel" sequence="10"/>
+    <menuitem id="menu_hotel_folio" name="Folio" parent="menu_hotel_root" action="folio_action"/>
 </odoo>
+

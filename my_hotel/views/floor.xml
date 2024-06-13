@@ -6,7 +6,6 @@
         <field name="arch" type="xml">
             <tree>
                 <field name="name"/>
-                <field name="rooms"/>
             </tree>
         </field>
     </record>
@@ -20,7 +19,6 @@
                     <group>
                         <group>
                             <field name="name"/>
-                            <field name="rooms"/>
                         </group>
                     </group>
                 </sheet>
@@ -40,20 +38,7 @@
         </field>
     </record>
 
-
-    <menuitem id="hotel_root"
-              name="Hotel"
-              sequence="10"/>
-
-    <menuitem id="hotel_floor_root"
-              name="Floors"
-              parent="hotel_root"
-              sequence="10"/>
-
-    <menuitem id="hotel_floor"
-              name="Floors"
-              parent="hotel_floor_root"
-              action="floor_action"
-              sequence="10"/>
+    <menuitem id="menu_hotel_root" name="Hotel" sequence="10"/>
+    <menuitem id="menu_hotel_floor" name="Floor" parent="menu_hotel_root" sequence="20" action="floor_action"/>
 
 </odoo>

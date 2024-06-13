@@ -1,6 +1,6 @@
-<!-- views/hotel_room_views.xml -->
+<?xml version="1.0" encoding="UTF-8"?>
 <odoo>
-    <record id="view_hotel_room_tree" model="ir.ui.view">
+    <record id="room_tree" model="ir.ui.view">
         <field name="name">hotel.room.tree</field>
         <field name="model">hotel.room</field>
         <field name="arch" type="xml">
@@ -14,36 +14,41 @@
         </field>
     </record>
 
-    <record id="view_hotel_room_form" model="ir.ui.view">
+    <record id="room_form" model="ir.ui.view">
         <field name="name">hotel.room.form</field>
         <field name="model">hotel.room</field>
         <field name="arch" type="xml">
             <form>
-                <header>
-                    <field name="name"/>
-                </header>
                 <sheet>
-                    <notebook>
-                        <page string="Information">
-                            <group>
-                                <field name="floor_id"/>
-                                <field name="room_manager_id"/>
-                                <field name="room_capacity"/>
-                                <field name="room_charge"/>
-                            </group>
-                        </page>
-                    </notebook>
+                    <group>
+                        <field name="name" />
+                        <field name="floor_id" />
+
+                    </group>
+                    <group>
+                        <field name="room_manager_id" />
+                        <field name="room_capacity"/>
+                        <field name="room_charge"/>
+                    </group>
+
                 </sheet>
             </form>
         </field>
     </record>
 
-    <record id="action_hotel_room" model="ir.actions.act_window">
-        <field name="name">Hotel Rooms</field>
+    <record id="room_action" model ="ir.actions.act_window">
+        <field name="name">room</field>
+        <field name="type">ir.actions.act_window</field>
         <field name="res_model">hotel.room</field>
-        <field name="view_mode">tree,form</field>
+        <field name="view_mode">tree,kanban,form</field>
+        <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+        Create your first ROOM!
+        </p>
+        </field>
     </record>
 
-    <menuitem id="menu_hotel_root" name="Hotel Management"/>
-    <menuitem id="menu_hotel_room" name="Rooms" parent="menu_hotel_root" action="action_hotel_room"/>
+    <menuitem id="menu_hotel_root" name="Hotel"/>
+    <menuitem id="menu_hotel_room" name="room" parent="menu_hotel_root" action="room_action"/>
+
 </odoo>
