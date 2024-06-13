@@ -1,61 +1,84 @@
-# models/hotel_folio.py
-from odoo import models, fields, api
-from odoo.exceptions import ValidationError
-from datetime import datetime, timedelta
+from odoo import api, fields, models, _
+from datetime import date
+
 
 class HotelFolio(models.Model):
-    _name = 'hotel.folio'
-    _description = 'Hotel Folio'
-    _order = 'order_date desc'
+    _name = "hotel.folio"
+    _description = "Hotel Folio"
 
-    name = fields.Char(string='Folio Name', readonly=True, copy=False, default='New')
-    order_date = fields.Date(string='Order Date', default=fields.Date.today(), readonly=True)
-    guest_name = fields.Many2one('res.partner', string='Guest Name', required=True)
-    invoice_address = fields.Many2one('res.partner', string='Invoice Address')
-    room_lines = fields.One2many('hotel.folio.room.line', 'folio_id', string='Room Lines')
-    total = fields.Float(string='Total', compute='_compute_total', store=True)
+    name = fields.Char(index=True, readonly=True, default=lambda self: _('New'))
+    order_date = fields.Date(string='Order Date', default=fields.Date.context_today, readonly=True)
+    guest_name_id = fields.Many2one('res.partner', string='Guest Name')
+    invoice_address_id = fields.Many2one('res.partner', string="Invoice Address")
+    room_lines_ids = fields.One2many('hotel.folio.line', 'folio_id', string="Room line ids")
+    total = fields.Float()
 
-    @api.model
-    def create(self, vals):
-        if vals.get('name', 'New') == 'New':
-            vals['name'] = self.env['ir.sequence'].next_by_code('hotel.folio') or 'New'
-        return super(HotelFolio, self).create(vals)
+    @api.onchange('guest_name_id')
+    def _onchange_guest_name_id(self):
+        if self.guest_name_id:
+            self.invoice_address_id = self.guest_name_id
 
-    @api.onchange('guest_name')
-    def _onchange_guest_name(self):
-        if self.guest_name:
-            self.invoice_address = self.guest_name.address_get(['invoice'])['invoice']
-
-    @api.depends('room_lines.subtotal')
+    @api.depends('room_lines_ids.subtotal')
     def _compute_total(self):
         for folio in self:
-            folio.total = sum(line.subtotal for line in folio.room_lines)
+            folio.total = sum(line.subtotal for line in folio.roomlines_ids)
 
-class HotelFolioRoomLine(models.Model):
-    _name = 'hotel.folio.room.line'
-    _description = 'Folio Room Line'
+    def create(self, vals):
+        vals['name'] = self.env['ir.sequence'].next_by_code('my_sequence_code')
+        return super(HotelFolio, self).create(vals)
 
+
+'''class HotelFolioLine(models.Model):
+    _name = 'hotel.folio.line'
+    _description = 'Hotel Folio Line'
+
+    check_in_date = fields.Date(string="Check In")
+    check_out_date = fields.Date(string="Check Out")
+    duration = fields.Float()
+    room_id = fields.Many2one('hotel.room', 'Room')
+    room_price = fields.Float()
+    discount = fields.Float()
+    subtotal = fields.Float()
     folio_id = fields.Many2one('hotel.folio', string='Folio')
-    check_in_date = fields.Date(string='Check In Date', required=True)
-    check_out_date = fields.Date(string='Check Out Date', required=True)
-    duration = fields.Float(string='Duration', compute='_compute_duration', store=True)
-    room_id = fields.Many2one('hotel.room', string='Room', required=True)
-    room_price = fields.Float(string='Room Price', readonly=True)
-    discount = fields.Float(string='Discount', default=0.0)
-    subtotal = fields.Float(string='Subtotal', compute='_compute_subtotal', store=True)
 
     @api.depends('check_in_date', 'check_out_date')
     def _compute_duration(self):
         for line in self:
             if line.check_in_date and line.check_out_date:
-                delta = line.check_out_date - line.check_in_date
+                delta = fields.Date.from_string(line.check_out_date) - fields.Date.from_string(line.check_in_date)
+                line.duration = delta.days + 1
+            else:
+                line.duration = 0
+
+    @api.depends('duration', 'room_price', 'discount')
+    def _compute_subtotal(self):
+        for line in self:
+            line.subtotal = (line.duration * line.room_price) - line.discount '''
+            
+            
+            
+            
+class HotelFolioLine(models.Model):
+    _name = 'hotel.folio.line'
+    _description = 'Hotel Folio Line'
+
+    folio_id = fields.Many2one('hotel.folio', string='Folio', required=True, ondelete='cascade')
+    check_in_date = fields.Date(string='Check In Date')
+    check_out_date = fields.Date(string='Check Out Date')
+    duration = fields.Float(string='Duration', compute='_compute_duration')
+    room_id = fields.Many2one('hotel.room', string='Room')
+    room_price = fields.Float(string='Room Price', related='room_id.room_charge')
+    discount = fields.Float(string='Discount')
+    subtotal = fields.Float(string='Subtotal', compute='_compute_subtotal')
+
+    @api.depends('check_in_date', 'check_out_date')
+    def _compute_duration(self):
+        for line in self:
+            if line.check_in_date and line.check_out_date:
+                delta = fields.Date.from_string(line.check_out_date) - fields.Date.from_string(line.check_in_date)
                 line.duration = delta.days
 
     @api.depends('duration', 'room_price', 'discount')
     def _compute_subtotal(self):
         for line in self:
-            line.subtotal = (line.duration * line.room_price) * (1 - (line.discount / 100))
-
-    # @api.onchange('room_id')
-    # def _onchange_room_id(self):
-    #     self.room_price = self.room_id.charge if self.room_id else 0.0
+            line.subtotal = (line.duration * line.room_price) - line.discount

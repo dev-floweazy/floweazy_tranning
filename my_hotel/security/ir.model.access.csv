@@ -1,5 +1,5 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-my_hotel.access_hotel_folio_room_line,access_hotel_folio_room_line,my_hotel.model_hotel_folio_room_line,base.group_user,1,1,1,1
 my_hotel.access_hotel_floor,access_hotel_floor,my_hotel.model_hotel_floor,base.group_user,1,1,1,1
 my_hotel.access_hotel_folio,access_hotel_folio,my_hotel.model_hotel_folio,base.group_user,1,1,1,1
 my_hotel.access_hotel_room,access_hotel_room,my_hotel.model_hotel_room,base.group_user,1,1,1,1
+
