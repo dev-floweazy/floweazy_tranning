@@ -12,6 +12,7 @@
     'data': [
         'security/ir.model.access.csv',
         'views/test_app_view.xml'
+        'views/res_partner_view.xml'
     ],
     'demo': [],
     'qweb': [],

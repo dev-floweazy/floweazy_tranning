@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_res_partner_inherit_tree" model="ir.ui.view">
+        <field name="name">view.res.partner.inherit.tree</field>
+        <field name="model">res.partner</field>
+        <field name="priority">2</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='property_id']" position='attributes'>
+
+                <attribute name='domain'>[YOUR NEW DOMAIN]</attribute>
+
+            </xpath>
+
+            <xpath expr="//field[@name='property_id']" position='after'>
+
+                <field name="dob"/>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>
