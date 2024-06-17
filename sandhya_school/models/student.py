@@ -10,16 +10,18 @@ class SchoolStudent(models.Model):
     date_of_birth = fields.Date(string="DOB")
     standard = fields.Char(string="Standard")
     guardian_name = fields.Char(string="Guardian_Name")
-    subject_ids = fields.One2many('school.student.lines','subject_id',string="Subjects")
+    #subject_ids = fields.One2many('school.student.lines','subject_id',string="Subjects")
 
 
 
 
-class SchoolStudentLines(models.Model):
+'''class SchoolStudentLines(models.Model):
     _name = "school.student.lines"
     _description = "school student lines"
-    
+
+    student_id = fields.Many2one('school.student', string='Student_Name')
     subject_id = fields.Many2one('school.student', string="Subjects")
-    name_id = fields.Many2one('school.professor', string="Professor Name")
+    name_id = fields.Many2one('school.professor', string="Professor Name") '''
+
 
 

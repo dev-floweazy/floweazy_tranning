@@ -19,7 +19,7 @@ class SchoolStandardLines(models.Model):
     _description = "school standard lines"
 
     standard_id = fields.Many2one('school.standard', string="Standard")
-    students_id = fields.Many2one('school.students',string="Students")
+    student_id = fields.Many2one('school.registration', string='Student')
 
 
 

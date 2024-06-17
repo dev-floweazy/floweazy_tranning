@@ -26,7 +26,7 @@
              <group string="Students">
                <field name="students_ids">
                  <tree string="Subjects">
-                   <field name="students_id"/>
+                   <field name="student_id"/>
                    <field name="standard_id"/>
                  </tree>
                </field>

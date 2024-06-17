@@ -6,7 +6,7 @@ class SchoolParent(models.Model):
 
     name = fields.Char(string="name",required=True)
     age = fields.Integer()
-    child_name = fields.Char()
+    child_name = fields.Many2one('school.registration', name='Child Name')
     relation_with_child = fields.Selection([('mother','Mother'),('father','Father'),('other','Other')])
     phone_no = fields.Char()
     address = fields.Char()

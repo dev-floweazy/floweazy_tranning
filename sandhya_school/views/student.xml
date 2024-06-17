@@ -29,14 +29,15 @@
               <field name="standard"/>
               <field name="guardian_name"/>
             </group>
-             <group string="Subjects">
+            <!-- <group string="Subjects">
                <field name="subject_ids">
                  <tree string="Subjects">
+                   <field name="student_id"/>
                    <field name="subject_id"/>
                    <field name="name_id"/>
                  </tree>
                </field>
-             </group>
+             </group> -->
           </group>
         </sheet>
       </form>
