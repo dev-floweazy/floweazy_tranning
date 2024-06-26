@@ -7,14 +7,17 @@
     'category' : 'Education',
     'website' : 'https://www.odoomates.tech',
     'Licence' : 'LGPL-3',
-    'depends' : [],
+    'depends' : ['contacts'],
     'data' : [
         'security/ir.model.access.csv',
         'views/student.xml',
         'views/professors.xml',
         'views/registration.xml',
         'views/subject.xml',
-        'views/parent.xml'
+        'views/parent.xml',
+        'views/classes.xml',
+        #'views/contact.xml'
+
     ],
     'demo' : [],
     'qweb' : [],

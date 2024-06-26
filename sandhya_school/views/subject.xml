@@ -30,12 +30,14 @@
                         <field name="type" />
                         <field name="subject_type"/>
                         <field name="grade_weightage"/>
+                        <field name="professor_ids" widget="many2many_tags"/>
                     </group>
 
                 </sheet>
             </form>
         </field>
     </record>
+
 
     <record id="subject_action" model ="ir.actions.act_window">
         <field name="name">subject</field>

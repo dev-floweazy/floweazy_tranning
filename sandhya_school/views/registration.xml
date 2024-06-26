@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <odoo>
-
+<!--Tree view -->
     <record id="registration_tree" model="ir.ui.view">
         <field name="name">school.registration.tree</field>
         <field name="model">school.registration</field>
@@ -12,11 +12,18 @@
                 <field name="gender"/>
                 <field name="guardian"/>
                 <field name="old_school"/>
+                <field name="first_name"/>
+                <field name="disability"/>
+                <field name="address"/>
+                <field name="registration_fee"/>
+                <field name="registration_date"/>
+                <!-- <field name="bonafide"/> -->
+                <field name="guardian_type" />
             </tree>
         </field>
     </record>
 
-
+<!--from view -->
     <record id="registration_form" model="ir.ui.view">
         <field name="name">school.registration.form</field>
         <field name="model">school.registration</field>
@@ -35,17 +42,167 @@
                     <group>
                         <field name="guardian"/>
                         <field name="old_school"/>
+                        <field name="first_name"/>
+                        <field name="disability"/>
+                    </group>
+                    <group>
+                        <field name="address"/>
+                        <field name="registration_fee"/>
+                        <field name="registration_date"/>
+                        <!--<field name="bonafide"/>-->
+                        <field name="guardian_type"/>
                     </group>
                 </sheet>
             </form>
         </field>
     </record>
 
+    <!--<record id="school_student_registration_kanban_form" model="ir.ui.view">
+        <field name="name">school.registration.kanban</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <kanban>
+                <field name="name"/>
+                <field name="date_of_birth"/>
+                <field name="standard"/>
+                <field name="gender"/>
+                <field name="guardian"/>
+                <field name="old_school"/>
+                <field name="first_name"/>
+                <field name="disability"/>
+                <field name="address"/>
+                <field name="registration_fee"/>
+                <field name="registration_date"/>
+                 <field name="bonafide"/>
+                <field name="guardian_type" />
+                <template>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_global_click">
+                            <div class="o_kanban_image">
+                                <img att="Avatar" t-att-src="kanban_image('school.registration','image','record.id.raw_value)"/>
+                            </div>
+                            <div class="oe_kanban_details">
+                                <strong class="o_kanban_record_title">
+                                    <field name="name"/>
+                                </strong>
+                                <div t-if="record.mobile.value">
+                                    <t t-esc="record.mobile.value"/>
+                                </div>
+                                <div t-if="record.date.value">
+                                    <t t-esc="record.date.value"/>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </template>
+            </kanban>
+        </field>
+    </record> -->
+
+<!--Kanban view-->
+    <record id="school_student_registration_kanban_form" model="ir.ui.view">
+    <field name="name">school.registration.kanban</field>
+    <field name="model">school.registration</field>
+    <field name="arch" type="xml">
+        <kanban>
+            <field name="name"/>
+            <field name="date_of_birth"/>
+            <field name="standard"/>
+            <field name="gender"/>
+            <field name="guardian"/>
+            <field name="old_school"/>
+            <field name="first_name"/>
+            <field name="disability"/>
+            <field name="address"/>
+            <field name="registration_fee"/>
+            <field name="registration_date"/>
+            <field name="guardian_type"/>
+
+            <templates>
+                <t t-name="kanban-box">
+                    <div t-attf-class="oe_kanban_global_click">
+                        <div class="o_kanban_image">
+                            <img t-att-src="kanban_image('school.registration', 'image', 'record.id.raw_value')" alt="Avatar"/>
+                        </div>
+                        <div class="oe_kanban_details">
+                            <strong class="o_kanban_record_title">
+                                <field name="name"/>
+                            </strong>
+                            <div t-if="record.date_of_birth">
+                                <t t-if="record.date_of_birth.value"><t t-esc="record.date_of_birth.value"/></t>
+                            </div>
+                            <div t-if="record.standard">
+                                <t t-if="record.standard.value"><t t-esc="record.standard.value"/></t>
+                            </div>
+                            <div t-if="record.gender">
+                                <t t-if="record.gender.value"><t t-esc="record.gender.value"/></t>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+            </templates>
+        </kanban>
+    </field>
+    </record>
+
+<!-- Graph view -->
+    <record id="registration_graph" model="ir.ui.view">
+        <field name="name">school.registration.graph</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <graph string="Registration Analysis">
+                <field name="name" type="row"/>
+                <field name="date_of_birth" type="row"/>
+                <field name="standard" type="measure"/>
+                <field name="gender" type="row"/>
+            </graph>
+        </field>
+    </record>
+
+<!--calender view -->
+    <record model="ir.ui.view" id="student_registration_calendar">
+            <field name="name">school.registration.calendar</field>
+            <field name="model">school.registration</field>
+            <field name="priority" eval="2"/>
+            <field name="arch" type="xml">
+                <calendar string="Calendar View" date_start="registration_date" color="standard" event_limit="5" quick_add="False">
+                    <field name="name" filters="1"/>
+                    <field name="date_of_birth"/>
+                    <field name="gender"/>
+                    <field name="guardian"/>
+                </calendar>
+            </field>
+        </record>
+
+    <!-- search view -->
+    <record model="ir.ui.view" id="student_registration_search">
+        <field name="name">school.registration.search</field>
+        <field name="model">school.registration</field>
+        <field name="arch" type="xml">
+            <search string="Registrations">
+                <field name="name" string="Name"/>
+                <field name="registration_date" string="Registration Date"/>
+                <field name="date_of_birth" string="Date of Birth"/>
+                <field name="gender" string="Gender"/>
+                <field name="guardian" string="Guardian"/>
+                <!--<filter string="Registered This Month" domain="[('registration_date', '>=', (context_today() - relativedelta(days=30)).strftime('%Y-%m-%d'))]" />
+                <group expand="1" string="Group By">
+                    <filter string="Registration Date" context="{'group_by': 'registration_date'}"/>
+                    <filter string="Gender" context="{'group_by': 'gender'}"/>
+                    <filter string="Guardian" context="{'group_by': 'guardian'}"/>
+                </group> -->
+            </search>
+        </field>
+    </record>
+
+
+
+
      <record id="registration_action" model ="ir.actions.act_window">
         <field name="name">registration</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">school.registration</field>
-        <field name="view_mode">tree,kanban,form</field>
+        <field name="view_mode">tree,kanban,graph,calendar,search,form</field>
         <field name="help" type="html">
         <p class="o_view_nocontent_smiling_face">
         Create your first registration!
