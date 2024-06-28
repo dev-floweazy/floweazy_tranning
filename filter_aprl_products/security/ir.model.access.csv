@@ -1,6 +1,0 @@
-id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
-filter_aprl_products.access_head_categories,access_head_categories,filter_aprl_products.model_head_categories,base.group_user,1,1,1,1
-filter_aprl_products.access_sub_categories,access_sub_categories,filter_aprl_products.model_sub_categories,base.group_user,1,1,1,1
-
-
-

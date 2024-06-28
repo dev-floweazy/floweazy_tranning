@@ -4,3 +4,4 @@ access_tour_inquiry_table,access.tour.inquiry.table,model_tour_inquiry_table,bas
 access_tour_program,access.tour.program,model_tour_program,base.group_user,1,1,1,1
 access_tour_program_lines,access.tour.program_lines,model_tour_program_lines,base.group_user,1,1,1,1
 access_purchase_order,access.purchase.order,model_purchase_order,base.group_user,1,1,1,1
+
