@@ -5,15 +5,10 @@
         <field name="model">tour.program</field>
         <field name="arch" type="xml">
             <tree string="Tour Programs">
-                <field name="tour_program_ids">
-                    <tree>
-                        <field name="product_name_id"/>
-                        <field name="price"/>
-                        <field name="tax_ids"/>
-
-                    </tree>
-
-                </field>
+                <field name="tour_program_ids"/>
+                <field name="total_amount"/>
+                <field name="tax_amount"/>
+                <field name="final_total"/>
             </tree>
         </field>
     </record>
@@ -24,10 +19,9 @@
         <field name="arch" type="xml">
             <form string="Tour Program">
                 <sheet>
-                    <group>
-
-                        <field name="tour_program_ids" widget="one2many_list">
-                            <tree editable="bottom">
+                   <!-- <group>
+                            <field name="tour_program_ids" widget="one2many_list">
+                                <tree editable="bottom">
                                 <field name="product_name_id"/>
                                 <field name="price"/>
                                 <field name="tax_ids" widget="many2many_tags"/>
@@ -36,8 +30,40 @@
                          <field name="total_amount" readonly="1"/>
                         <field name="tax_amount" readonly="1"/>
                         <field name="final_total" readonly="1"/>
-                    </group>
+                    </group> -->
+                    <notebook>
+                        <page string="Tour Program Lines" name="tour_program_lines">
+                            <group>
+                                <field name="tour_program_ids" widget="one2many_list">
+                                    <tree editable="bottom">
+                                        <field name="name"/>
+                                        <field name="product_name_id"/>
+                                        <field name="price"/>
+                                        <field name="tax_ids" widget="many2many_tags"/>
+                                    </tree>
+                                </field>
+                            </group>
+
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="total_amount">
+                                <label for="total_amount" />
+                                <field name="total_amount" nolabel="1" widget="monetary"/>
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="tax_amount">
+                                <label for="tax_amount" />
+                                <field name="tax_amount" nolabel="1" widget="monetary"/>
+                            </group>
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="final_total">
+                                <label for="final_total" />
+                                <field name="final_total" nolabel="1" widget="monetary"/>
+                            </group>
+                            <div class="clearfix"/>
+                        </page>
+                    </notebook>
                 </sheet>
+                 <div class="oe_chatter">
+                <field name="message_follower_ids" groups="base.group_user"/>
+                  <field name="message_ids"/>
+                </div>
             </form>
         </field>
     </record>
@@ -54,7 +80,7 @@
         </field>
   </record>
 
-  <menuitem id="tour_root" name="Tour" sequence="10"/>
+  <menuitem id="tour_root" name="Tour" sequence="1"/>
   <!--<menuitem id="tour_details_root" name="Tour_details" parent="tour_root" sequence="10"/>-->
-  <menuitem id="tour_program" name="Tour Program" parent="tour_details_root" action="tour_program_action" sequence="10"/>
+  <menuitem id="tour_program" name="Tour Program" parent="tour_details_root" action="tour_program_action" sequence="1"/>
 </odoo>

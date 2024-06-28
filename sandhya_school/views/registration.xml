@@ -191,6 +191,14 @@
                     <filter string="Gender" context="{'group_by': 'gender'}"/>
                     <filter string="Guardian" context="{'group_by': 'guardian'}"/>
                 </group> -->
+
+                <filter string="Disability" domain="[('disability', '=', True)]" name="disability"/>
+
+                <group expand="0" string="Group By">
+                    <filter name="group_by_standard" string="Standard" context="{'group_by': 'standard'}"/>
+                    <filter name="group_gender" string="Gender" context="{'group_by':'gender'}"/>
+                    <filter name="group_by_registration_date" string="Registration Date" context="{'group_by':'registration_date'}"/>
+                </group>
             </search>
         </field>
     </record>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="purchase_order_from_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='currency_id']" position="after">
+                <field name="vendor_notes"/>
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="purchase_order_action" model="ir.actions.act_window">
+        <field name="name">Purchase Order</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">purchase.order</field>
+        <field name="view_mode">form</field>
+        <field name="help" type="html">
+          <p class="o_view_nocontent_smiling_face">
+            Create your Tour Details!
+          </p>
+        </field>
+  </record>
+
+    <menuitem id="tour_root" name="Tour" sequence="10"/>
+    <menuitem id="configurations_root" name="Configurations" parent="tour_root" sequence="10"/>
+    <menuitem id="purchase_order" name="Purchase Order" parent="configurations_root" action="purchase_order_action" sequence="10"/> -->
+
+
+
+</odoo>

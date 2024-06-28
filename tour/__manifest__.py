@@ -7,14 +7,14 @@
     'category' : 'Education',
     'website' : 'https://www.odoomates.tech',
     'Licence' : 'LGPL-3',
-    'depends' : ['sale','account','purchase'],
+    'depends' : ['sale','account','purchase','mail'],
     'data' : [
         'views/tour_package.xml',
         'views/tour_inquiry_table.xml',
         'data/customer_inquiry_sequence.xml',
-        'views/tour_details.xml',
+        #'views/tour_details.xml',
         'views/tour_program.xml',
-        'views/notes_vendor.xml'
+        'views/purchase_order.xml'
     ],
     'demo' : [],
     'qweb' : [],
