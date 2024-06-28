@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <odoo>
     <record id="tour_package_view_tree" model="ir.ui.view">
-      <field name="name">tour.package..tree</field>
+      <field name="name">tour.package.tree</field>
       <field name="model">tour.package</field>
       <field name="arch" type="xml">
         <tree string="Tour Package">
@@ -32,6 +32,10 @@
                  </group>
               </group>
             </sheet>
+              <div class="oe_chatter">
+                <field name="message_follower_ids" groups="base.group_user"/>
+                  <field name="message_ids"/>
+                </div>
           </form>
         </field>
   </record>

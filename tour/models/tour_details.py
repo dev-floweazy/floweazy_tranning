@@ -9,8 +9,8 @@ class TourDetails(models.Model):
 
     tour_name = fields.Many2one('tour.package',string="Tour Name")
     tour_package_price = fields.Float(compute='_compute_tour_package_price', store='True')
-    preferred_start_date = fields.Date()
-    preferred_end_date = fields.Date()
+    preferred_start_date = fields.Date(string="Preferred Start Date")
+    preferred_end_date = fields.Date(string="Preferred End Date")
 
     @api.constrains('preferred_start_date', 'preferred_end_date')
     def _constrains_preferred_start_date(self):

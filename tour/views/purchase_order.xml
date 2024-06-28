@@ -12,8 +12,8 @@
         </field>
     </record>
 
-    <record id="notes_vendor_action" model="ir.actions.act_window">
-        <field name="name">Notes Vendor</field>
+    <record id="purchase_order_action" model="ir.actions.act_window">
+        <field name="name">Purchase Order</field>
         <field name="type">ir.actions.act_window</field>
         <field name="res_model">purchase.order</field>
         <field name="view_mode">form</field>
@@ -26,9 +26,8 @@
 
     <menuitem id="tour_root" name="Tour" sequence="10"/>
     <menuitem id="configurations_root" name="Configurations" parent="tour_root" sequence="10"/>
-    <menuitem id="vendor_notes" name="Vendor Notes" parent="configurations_root" action="notes_vendor_action" sequence="10"/>
+    <menuitem id="purchase_order" name="Purchase Order" parent="configurations_root" action="purchase_order_action" sequence="10"/> -->
 
 
 
 </odoo>
-
