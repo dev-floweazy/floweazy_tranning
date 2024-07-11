@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_mrp_production_form_inherited" model="ir.ui.view">
+        <field name="name">mrp.production.form.inherited</field>
+        <field name="model">mrp.production</field>
+        <field name="inherit_id" ref="mrp.mrp_production_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//sheet/group" position="inside">
+                <group>
+                    <field name="batch_id" string="Batch ID" required="1"/>
+                    <field name="packaging_size" string="Packaging Size" required="1"/>
+                    <field name="pack_count" string="Pack Count" readonly="1"/>
+                    <field name="pallet_size" string="Pallet Size" default="100"/>
+                    <field name="packaging_size"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

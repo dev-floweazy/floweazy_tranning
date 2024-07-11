@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+
+     <!-- Product Batch fields menu item -->
+    <menuitem id="product_batch_menu"
+              name="Product Batch"
+              action="action_view_product_batch"
+              parent="stock.menu_stock_config_settings"
+              sequence="10"/>
+</odoo>

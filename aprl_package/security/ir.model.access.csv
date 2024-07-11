@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+aprl_package.access_pack_divide,access_pack_divide,aprl_package.model_pack_divide,base.group_user,1,1,1,1
+aprl_package.access_pack_divide_line,access_pack_divide_line,aprl_package.model_pack_divide_line,base.group_user,1,1,1,1
+aprl_package.access_main_package,access_main_package,aprl_package.model_main_package,base.group_user,1,1,1,1
+aprl_package.access_purchase_order_line_batch,access_purchase_order_line_batch,aprl_package.model_purchase_order_line_batch,base.group_user,1,1,1,1
+aprl_package.access_product_batch,access_product_batch,aprl_package.model_product_batch,base.group_user,1,1,1,1

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_pack_divide_form" model="ir.ui.view">
+        <field name="name">pack.divide.form</field>
+        <field name="model">pack.divide</field>
+        <field name="arch" type="xml">
+            <form string="Pack Divide">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="batch_id"/>
+                            <field name="package_id"/>
+                            <field name="packaging_size"/>
+                            <field name="product_batch"/>
+                        </group>
+                        <group>
+                            <field name="components"/>
+                            <field name="pack_count" readonly="1"/>
+                            <field name="product_batch_tracking"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Package Lines">
+                            <field name="package_lines">
+                                <tree editable="bottom">
+                                    <field name="product_id"/>
+                                    <field name="packaging_quantity"/>
+                                    <field name="pack_count"/>
+                                    <field name="pack_unique_id"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_pack_divide_tree" model="ir.ui.view">
+        <field name="name">pack.divide.tree</field>
+        <field name="model">pack.divide</field>
+        <field name="arch" type="xml">
+            <tree string="Pack Divide">
+                <field name="batch_id"/>
+                <field name="components"/>
+                <field name="packaging_size"/>
+                <field name="pack_count"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_pack_divide" model="ir.actions.act_window">
+        <field name="name">Pack Divide</field>
+        <field name="res_model">pack.divide</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_pack_divide_tree"/>
+    </record>
+
+    <menuitem id="aprl_root" name="ARPL" sequence="10"/>
+    <menuitem id="pack_divide_root" name="Pack Process" parent="aprl_root" sequence="10"/>
+    <menuitem id="pack_divide_table" name="Packaging" parent="pack_divide_root" action="action_pack_divide" sequence="10"/>
+</odoo>
